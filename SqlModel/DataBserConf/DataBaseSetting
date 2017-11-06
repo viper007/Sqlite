@@ -1,0 +1,16 @@
+{
+    DBList = (
+                zhangsan = (
+                           Studnet
+                           Person
+                           )
+                lisi = (
+                           name
+                           address
+                           )
+              )
+}
+
+#文件用来描述对应数据库信息，以便后续维护。
+- DBList包含各个数据库
+- 每个数据库里面都有对应的多个表
