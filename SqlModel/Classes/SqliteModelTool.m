@@ -87,7 +87,19 @@
     NSString *renameTableSql = [NSString stringWithFormat:@"ALTER TABLE %@ RENAME TO %@",tempTableName,tableName];
     [execSqls addObject:renameTableSql];
     return [SqliteTool dealSqls:execSqls uid:uid];
+}
 
++ (BOOL)isExistPrimaryKey:(Class)cls uid:(NSString *)uid value:(NSString *)value {
+    NSString *tableName = [ModelTool tableName:cls];
+    NSString *primaryKey;
+    if ([cls respondsToSelector:@selector(primaryKey)]) {
+        primaryKey = [cls primaryKey];
+    }else {
+        primaryKey = @"ID";
+    }
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ where %@ = '%@'",tableName,primaryKey,value];
+    NSArray *tempArray = [SqliteTool querySql:sql uid:uid];
+    return tempArray.count;
 }
 
 #pragma mark - 数据库操作

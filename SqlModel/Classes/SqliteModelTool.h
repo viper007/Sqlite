@@ -33,7 +33,10 @@
  *  更新表单
  */
 + (BOOL)updateTable:(Class)cls uid:(NSString *)uid ;
-
+/**
+ *   判断对应的primaryKey的值是否存在
+ */
++ (BOOL)isExistPrimaryKey:(Class)cls uid:(NSString *)uid value:(NSString *)value ;
 #pragma mark - 数据库操作
 /**
  * 查询数据库中的数据
